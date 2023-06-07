@@ -2,6 +2,7 @@ package br.unisul.leilao.login;
 
 import org.junit.Assert;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -13,9 +14,13 @@ public class LoginTest2 {
 
 		private ChromeDriver browser;
 
+		@BeforeAll
+		public static void beforeAll() {
+			System.setProperty("webdriver.chrome.driver", "/drivers/chromedriver.exe");
+		}
+		
 		@BeforeEach
 		public void beforeEach() {
-	        System.setProperty("webdriver.chrome.driver", "/drivers/chromedriver.exe");
 	        this.browser = new ChromeDriver();
 		}
 		
