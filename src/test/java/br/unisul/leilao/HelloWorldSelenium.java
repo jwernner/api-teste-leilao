@@ -10,6 +10,7 @@ public class HelloWorldSelenium {
 	public void hello() {
 		
 		System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
+		// apontar para o Selenium que o driver do Chrome está no diretório que criamos.
 		
 		WebDriver browser = new ChromeDriver();
 		// abrir o navegador classe principal do Selenium WebDriver, criando uma varíavel browser do tipo webdriver
