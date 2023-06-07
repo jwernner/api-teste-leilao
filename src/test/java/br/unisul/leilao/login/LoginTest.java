@@ -12,12 +12,12 @@ public class LoginTest {
 	    public void deveriaEfetuarLoginComDadosValidos() {
 	        System.setProperty("webdriver.chrome.driver", "/drivers/chromedriver.exe");
 	        WebDriver browser = new ChromeDriver();
-	        browser.navigate().to("http://localhost:8080/login");
+	        browser.navigate().to("http://localhost:8090/login");
 	        browser.findElement(By.id("username")).sendKeys("fulano");
 	        browser.findElement(By.id("password")).sendKeys("pass");
 	        browser.findElement(By.id("login-form")).submit();
 	        
-	        Assert.assertFalse(browser.getCurrentUrl().equals("http://localhost:8080/login"));
+	        Assert.assertFalse(browser.getCurrentUrl().equals("http://localhost:8090/login"));
 	        Assert.assertEquals("fulano", browser.findElement(By.id("usuario-logado")).getText());
 	        browser.quit();
 	    }
