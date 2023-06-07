@@ -12,6 +12,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class LoginTest2 {
 
+		private static final String URL_LOGIN = "http://localhost:8090/login";
 		private ChromeDriver browser;
 
 		@BeforeAll
@@ -22,7 +23,7 @@ public class LoginTest2 {
 		@BeforeEach
 		public void beforeEach() {
 	        this.browser = new ChromeDriver();
-	        browser.navigate().to("http://localhost:8090/login");
+	        browser.navigate().to(URL_LOGIN);
 		}
 		
 		@AfterEach
@@ -36,7 +37,7 @@ public class LoginTest2 {
 	        browser.findElement(By.id("password")).sendKeys("pass");
 	        browser.findElement(By.id("login-form")).submit();
 	        
-	        Assert.assertFalse(browser.getCurrentUrl().equals("http://localhost:8090/login"));
+	        Assert.assertFalse(browser.getCurrentUrl().equals(URL_LOGIN));
 	        Assert.assertEquals("fulano", browser.findElement(By.id("usuario-logado")).getText());
 	    }
 	    
