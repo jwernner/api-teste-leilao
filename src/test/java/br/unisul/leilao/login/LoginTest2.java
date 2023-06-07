@@ -1,6 +1,7 @@
 package br.unisul.leilao.login;
 
 import org.junit.Assert;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -16,8 +17,13 @@ public class LoginTest2 {
 		public void beforeEach() {
 	        System.setProperty("webdriver.chrome.driver", "/drivers/chromedriver.exe");
 	        this.browser = new ChromeDriver();
-
 		}
+		
+		@AfterEach
+		public void afterEach() {
+	        this.browser.quit();
+		}
+		
 	    @Test
 	    public void deveriaEfetuarLoginComDadosValidos() {
 	        browser.navigate().to("http://localhost:8090/login");
@@ -27,7 +33,6 @@ public class LoginTest2 {
 	        
 	        Assert.assertFalse(browser.getCurrentUrl().equals("http://localhost:8090/login"));
 	        Assert.assertEquals("fulano", browser.findElement(By.id("usuario-logado")).getText());
-	        browser.quit();        
 	    }
 	    
 	    @Test
@@ -40,6 +45,5 @@ public class LoginTest2 {
 	        Assert.assertTrue(browser.getCurrentUrl().equals("http://localhost:8090/login?error"));
 	        Assert.assertTrue("fulano", browser.getPageSource().contains("Usuário e senha inválidos."));
 	        Assert.assertThrows(NoSuchElementException.class, () -> browser.findElement(By.id("usuario-logado")));
-	        browser.quit();
 	    }
 }
