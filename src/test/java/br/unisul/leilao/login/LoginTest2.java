@@ -22,6 +22,7 @@ public class LoginTest2 {
 		@BeforeEach
 		public void beforeEach() {
 	        this.browser = new ChromeDriver();
+	        browser.navigate().to("http://localhost:8090/login");
 		}
 		
 		@AfterEach
@@ -31,7 +32,6 @@ public class LoginTest2 {
 		
 	    @Test
 	    public void deveriaEfetuarLoginComDadosValidos() {
-	        browser.navigate().to("http://localhost:8090/login");
 	        browser.findElement(By.id("username")).sendKeys("fulano");
 	        browser.findElement(By.id("password")).sendKeys("pass");
 	        browser.findElement(By.id("login-form")).submit();
@@ -42,7 +42,6 @@ public class LoginTest2 {
 	    
 	    @Test
 	    public void naoDeveriaLogarComDadosInvalidos() {
-	        browser.navigate().to("http://localhost:8090/login");
 	        browser.findElement(By.id("username")).sendKeys("invalido");
 	        browser.findElement(By.id("password")).sendKeys("123");
 	        browser.findElement(By.id("login-form")).submit();
